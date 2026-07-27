@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Leo Chamyteiro - Fim de Férias</title>
+</head>
+
+<body>
+
+    <div class="menu-screen" id="menu">
+        <div class="title-container">
+            <h1>Leo Chamyteiro - Fim de Férias</h1>
+        </div>
+
+        <div class="menu-buttons">
+            <button onclick="startGame()">Jogar</button>
+            <button onclick="showTutorial()">Tutorial</button>
+            <button onclick="showCredits()">Créditos</button>
+        </div>
+
+        <div class="menu-content hidden" id="menu-content"></div>
+    </div>
+
+    <div class="game-board hidden">
+        <img src="img/clouds.png" class="clouds">
+        <img src="img/chamyteiro.png" class="chamyteiro">
+        <img src="img/cacto.png" class="cacto">
+
+        <div class="score">0</div>
+
+        <div class="game-over hidden">
+
+              <img src="img/final.png" class="final-image">
+
+            <h1>Calma, gatinho... Acabou as férias!</h1>
+            <button onclick="restartGame()">Reiniciar</button>
+        </div>
+    </div>
+
+    <audio id="bg-music" src="audio/music.mp3" loop></audio>
+
+</body>
+<script src="js/script.js"></script>
+
+</html>
