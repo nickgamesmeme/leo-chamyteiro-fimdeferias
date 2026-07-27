@@ -16,7 +16,9 @@ const gameOver = document.querySelector(".game-over");
 const music = document.getElementById("bg-music");
 
 
-// Imagens
+// ======================
+// IMAGENS
+// ======================
 
 const imagemNormal = "img/chamyteiro.png";
 const imagemMorto = "img/game-over.png";
@@ -49,7 +51,7 @@ function showTutorial(){
 
     menuContent.innerHTML = `
         <h2>Tutorial</h2>
-        <p>Pule usando qualquer tecla ou toque na tela.</p>
+        <p>Pule usando qualquer tecla ou tocando na tela.</p>
         <p>Desvie dos cactos.</p>
     `;
 
@@ -63,16 +65,15 @@ function showCredits(){
 
     menuContent.innerHTML = `
         <h2>Mensagem</h2>
-        <p>Finalmente acabou suas férias, Leo! Seu time já estava com saudades!.</p>
+        <p>Finalmente acabou suas férias, Leo! Seu time já estava com saudades!</p>
     `;
 
 }
 
 
 
-
 // ======================
-// INICIAR
+// INICIAR JOGO
 // ======================
 
 function startGame(){
@@ -87,16 +88,12 @@ function startGame(){
 
 
 
-
-
 // ======================
 // RESET DO JOGO
 // ======================
 
 function iniciar(){
 
-
-    // limpa tudo antes
 
     clearInterval(scoreInterval);
 
@@ -122,7 +119,7 @@ function iniciar(){
 
 
 
-    // remove tela game over
+    // remove game over
 
     gameOver.classList.add("hidden");
 
@@ -157,7 +154,6 @@ function iniciar(){
 
 
 
-
     // música
 
     music.pause();
@@ -171,11 +167,9 @@ function iniciar(){
 
 
 
-
-    // score
+    // pontuação
 
     scoreInterval = setInterval(()=>{
-
 
         if(gameRunning){
 
@@ -185,9 +179,7 @@ function iniciar(){
 
         }
 
-
     },100);
-
 
 
 
@@ -196,7 +188,6 @@ function iniciar(){
 
 
 }
-
 
 
 
@@ -224,9 +215,7 @@ function jump(){
 
     jumpTimeout = setTimeout(()=>{
 
-
         chamyteiro.classList.remove("jump");
-
 
     },500);
 
@@ -289,7 +278,6 @@ function verificarColisao(){
 
 
 
-
 // ======================
 // MORTE
 // ======================
@@ -316,7 +304,7 @@ function finalizar(){
 
 
 
-    // troca imagem personagem
+    // troca imagem
 
     chamyteiro.src = imagemMorto;
 
@@ -324,7 +312,7 @@ function finalizar(){
 
 
 
-    // congela cacto no local
+    // congela cacto
 
     const cactusPosition =
     cacto.getBoundingClientRect();
@@ -345,7 +333,7 @@ function finalizar(){
 
 
 
-    // mostra game over
+    // mostra tela final
 
     gameOver.classList.remove("hidden");
 
@@ -357,7 +345,7 @@ function finalizar(){
 
 
 // ======================
-// REINICIAR
+// RESTART
 // ======================
 
 function restartGame(){
@@ -381,28 +369,32 @@ function restartGame(){
 
 document.addEventListener("keydown",(e)=>{
 
-
-    e.preventDefault();
-
     jump();
-
 
 });
 
 
 
 
-// CELULAR - toque em qualquer lugar
+// CELULAR - toque na tela
 
 document.addEventListener("touchstart",(e)=>{
 
 
-    e.preventDefault();
+    // deixa os botões funcionarem
+
+    if(e.target.tagName === "BUTTON"){
+
+        return;
+
+    }
+
+
 
     jump();
 
 
 },
 {
-    passive:false
+    passive:true
 });
